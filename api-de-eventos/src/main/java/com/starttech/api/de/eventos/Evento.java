@@ -3,8 +3,14 @@ package com.starttech.api.de.eventos;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
+
+/*@Entity - é uma notação  do JPA que indica que a class é uma entidade
+* @Table(name = "eventos") -- nome da tabela do banco de dados
+* @Id -- chave primaria da tabela
+*  @GeneratedValue(strategy = GenerationType.IDENTITY) -- indica que o valor do ID é gerado automaticamente
+* */
+@Entity
 @Table(name = "eventos")
 public class Evento {
     @Id
