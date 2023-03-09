@@ -1,12 +1,10 @@
 package com.starttech.api.de.eventos;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -24,22 +22,22 @@ public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Size (min = 1, message = "whatever")
+    @NotNull
     private Long id;
 
-    @NotBlank
+    @NotNull
     private String nome;
 
     private String descricao;
 
-
-    @Future
+    @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
 
-    @NotBlank
+    @NotNull
     private String localizacao;
 
-    @NotBlank
+    @NotNull
     private String categoria;
 
 }

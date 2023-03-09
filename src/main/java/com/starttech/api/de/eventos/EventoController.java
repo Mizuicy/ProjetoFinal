@@ -60,8 +60,6 @@ public class EventoController {
             return ResponseEntity.notFound().build();
 
             }
-
-
         evento.setId(id);
         Evento eventoAtualizado = eventoRepository.save(evento);
         return ResponseEntity.ok(eventoAtualizado);
