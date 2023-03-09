@@ -1,9 +1,8 @@
-package com.starttech.api.de.eventos;
+package com.starttech.api.de.eventos.controller;
 
-import jakarta.transaction.Transactional;
+import com.starttech.api.de.eventos.entity.Evento;
+import com.starttech.api.de.eventos.repository.EventoRepository;
 import jakarta.validation.Valid;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/eventos")
-@Getter
-@Setter
+
 public class EventoController {
 
     @Autowired
@@ -37,8 +35,7 @@ public class EventoController {
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Evento adicionar(@RequestBody Evento evento) {
-
+    public Evento adicionar(@RequestBody @Valid Evento evento) {
         return eventoRepository.save(evento);
     }
 
@@ -53,12 +50,10 @@ public class EventoController {
     }
 
     @PutMapping("/{id}")
-    @Transactional
-        public ResponseEntity<Evento> atualizar(@PathVariable Long id , @Valid @RequestBody Evento evento) {
+    public ResponseEntity<Evento> atualizar(@PathVariable Long id , @Valid @RequestBody Evento evento) {
 
         if (!eventoRepository.existsById(id)){
             return ResponseEntity.notFound().build();
-
             }
         evento.setId(id);
         Evento eventoAtualizado = eventoRepository.save(evento);
