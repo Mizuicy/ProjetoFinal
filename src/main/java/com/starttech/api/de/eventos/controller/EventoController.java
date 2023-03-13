@@ -21,7 +21,7 @@ public class EventoController {
 
     @GetMapping
     public List<Evento> listar() {
-        return eventoRepository.findAll();
+        return (List<Evento>) eventoRepository.findAll();
     }
     @GetMapping("/{id}")
     public ResponseEntity<Evento> buscar(@PathVariable Long id) {

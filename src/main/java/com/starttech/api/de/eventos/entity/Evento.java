@@ -3,8 +3,6 @@ package com.starttech.api.de.eventos.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,12 +23,13 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @NotBlank
     private String nome;
 
     private String descricao;
 
-    @Future(message = "pode essa data não" )
+    @Future(message = "Data antigas não são permitidas" )
     private LocalDate data;
 
     @NotBlank
