@@ -21,6 +21,7 @@ public class EventoController {
 
     @GetMapping
     public List<Evento> listar() {
+
         return (List<Evento>) eventoRepository.findAll();
     }
     @GetMapping("/{id}")

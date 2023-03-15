@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 /*@Entity - é uma notação  do JPA que indica que a class é uma entidade
@@ -23,7 +24,6 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @NotBlank
     private String nome;
 
@@ -38,7 +38,6 @@ public class Evento {
     @NotBlank
     private String categoria;
 
-    @ManyToOne
-    private Participante participante;
-
+    @OneToMany
+    private List<Participante> participante;
 }

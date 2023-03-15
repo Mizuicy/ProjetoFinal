@@ -21,6 +21,4 @@ public class Participante {
 
     @ManyToOne
     private Evento evento;
-
-
 }
