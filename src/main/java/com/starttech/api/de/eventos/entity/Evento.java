@@ -1,5 +1,6 @@
 package com.starttech.api.de.eventos.entity;
 
+import com.starttech.api.de.eventos.Categoria;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
@@ -7,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 /*@Entity - é uma notação  do JPA que indica que a class é uma entidade
@@ -35,7 +37,7 @@ public class Evento {
     @NotBlank
     private String localizacao;
 
-    @NotBlank
-    private String categoria;
+    @OneToMany
+    private List<Categoria> categoria;
 
 }

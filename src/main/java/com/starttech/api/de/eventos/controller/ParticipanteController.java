@@ -16,7 +16,6 @@ import java.util.Optional;
 
     public class ParticipanteController {
 
-
     @Autowired
     private ParticipanteRepository participanteRepository;
 
@@ -65,4 +64,5 @@ import java.util.Optional;
         Participante participanteAtualizado = participanteRepository.save(participante);
         return ResponseEntity.ok(participanteAtualizado);
     }
+
 }
