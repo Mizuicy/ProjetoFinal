@@ -38,4 +38,7 @@ public class Evento {
     @NotBlank
     private String categoria;
 
+    @ManyToOne
+    private Participante participante;
+
 }
