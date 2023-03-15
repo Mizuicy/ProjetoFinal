@@ -25,7 +25,6 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @NotBlank
     private String nome;
 
@@ -40,4 +39,6 @@ public class Evento {
     @OneToMany
     private List<Categoria> categoria;
 
+    @OneToMany
+    private List<Participante> participante;
 }

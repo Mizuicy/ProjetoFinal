@@ -17,7 +17,8 @@ public class Participante {
 
     private String nome;
 
-    private String sobrenome;
+    private String email;
 
-
+    @ManyToOne
+    private Evento evento;
 }
