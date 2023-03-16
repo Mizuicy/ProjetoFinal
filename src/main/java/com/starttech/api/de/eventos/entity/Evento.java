@@ -1,6 +1,5 @@
 package com.starttech.api.de.eventos.entity;
 
-import com.starttech.api.de.eventos.Categoria;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
@@ -37,8 +36,9 @@ public class Evento {
     private String localizacao;
 
     @OneToMany
-    private List<Categoria> categoria;
-
+    private List<Ingresso> ingressos;
     @OneToMany
+    private List<Categoria> categoria;
+    @ManyToMany
     private List<Participante> participante;
 }

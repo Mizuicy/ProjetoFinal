@@ -1,4 +1,4 @@
-package com.starttech.api.de.eventos;
+package com.starttech.api.de.eventos.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
