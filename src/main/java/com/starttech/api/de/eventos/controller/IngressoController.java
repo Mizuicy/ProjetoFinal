@@ -46,4 +46,6 @@ public class IngressoController {
         Ingresso ingressoAtualizado = ingressoRepository.save(ingresso);
         return  ResponseEntity.ok(ingressoAtualizado);
         }
+
+
 }
