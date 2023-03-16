@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.List;
@@ -22,8 +23,9 @@ public class Participante {
     @CPF(message = "cpf inválido")
     private String CPF;
 
-    @NotBlank //Não permite valor nulo e o comprimento "espaços em branco"
+    @NotBlank(message = "O nome é obrigatório") //Não permite valor nulo e o comprimento "espaços em branco"
     @Pattern(regexp = "^[A-Z]+(.)*")// O @Pattern é Validação para primeira letra ser maiuscula
+    @Length(min = 3, max = 35, message = "O nome deverá ter no máximo {max} caracteres")
     private String nomeParticipante;
 
     @Email
