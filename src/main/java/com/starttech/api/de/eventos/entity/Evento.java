@@ -38,7 +38,7 @@ public class Evento {
     private LocalDate data;
 
     @NotBlank
-    @Pattern(regexp = "^[A-Z]+(.)*")
+    @Pattern(regexp = "^[A-Z]+(.)*", message = "A primeira letra deve ser maiuscula")
     private String localizacao;
 
     @OneToMany

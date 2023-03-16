@@ -20,15 +20,15 @@ public class Participante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @CPF(message = "cpf inválido")
-    private String CPF;
+    @CPF
+    private String cpf;
 
     @NotBlank(message = "O nome é obrigatório") //Não permite valor nulo e o comprimento "espaços em branco"
-    @Pattern(regexp = "^[A-Z]+(.)*")// O @Pattern é Validação para primeira letra ser maiuscula
+    @Pattern(regexp = "^[A-Z]+(.)*", message = "A primeira letra deve ser maiuscula")// O @Pattern é Validação para primeira letra ser maiuscula
     @Length(min = 3, max = 35, message = "O nome deverá ter no máximo {max} caracteres")
     private String nomeParticipante;
 
-    @Email
+    @Email(message = "email inválido")
     private String email;
 
     @ManyToMany //Esta anotação define uma associação com outra entidade
