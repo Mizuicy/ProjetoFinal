@@ -20,6 +20,7 @@ public class Participante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Campo cpf está vazio")
     @CPF
     private String cpf;
 
@@ -28,7 +29,8 @@ public class Participante {
     @Length(min = 3, max = 35, message = "O nome deverá ter no máximo {max} caracteres")
     private String nomeParticipante;
 
-    @Email(message = "email inválido")
+    @NotBlank(message = "Campo email está incorrento")
+    @Email
     private String email;
 
     @ManyToMany //Esta anotação define uma associação com outra entidade

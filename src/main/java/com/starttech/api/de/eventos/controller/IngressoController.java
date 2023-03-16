@@ -2,6 +2,7 @@ package com.starttech.api.de.eventos.controller;
 
 import com.starttech.api.de.eventos.entity.Ingresso;
 import com.starttech.api.de.eventos.repository.IngressoRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,13 +33,13 @@ public class IngressoController {
     }
 
     @PostMapping
-    public Ingresso criarIngresso(@RequestBody Ingresso ingresso) {
+    public Ingresso criarIngresso(@RequestBody @Valid Ingresso ingresso) {
         ingresso.setStatus("disponivel"); // setando o status para disponivel quando for criado
         return ingressoRepository.save(ingresso);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Ingresso> atualizarIngresso(@PathVariable long id, @RequestBody Ingresso ingresso) {
+    public ResponseEntity<Ingresso> atualizarIngresso(@PathVariable long id, @Valid @RequestBody Ingresso ingresso) {
         if (ingressoRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }

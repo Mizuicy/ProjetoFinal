@@ -3,6 +3,7 @@ package com.starttech.api.de.eventos.controller;
 
 import com.starttech.api.de.eventos.entity.Participante;
 import com.starttech.api.de.eventos.repository.ParticipanteRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class ParticipanteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Participante adicionar(@RequestBody Participante participante) {
+    public Participante adicionar(@RequestBody @Valid Participante participante) {
         return participanteRepository.save(participante);
     }
 
@@ -50,7 +51,7 @@ public class ParticipanteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Participante> atualizar(@PathVariable Long id, @RequestBody Participante participante) {
+    public ResponseEntity<Participante> atualizar(@PathVariable Long id, @Valid @RequestBody Participante participante) {
 
         if (!participanteRepository.existsById(id)) {
             return ResponseEntity.notFound().build();

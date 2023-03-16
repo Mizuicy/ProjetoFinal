@@ -41,12 +41,16 @@ public class Evento {
     @Pattern(regexp = "^[A-Z]+(.)*", message = "A primeira letra deve ser maiuscula")
     private String localizacao;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = )
     private List<Ingresso> ingressos;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Categoria> categoria;
 
-    @ManyToMany
-    private List<Participante> participante;
+//    @ManyToMany
+//    private List<Participante> participante;
+//
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutor")
+//    private List<Aluno> alunos;
 }
