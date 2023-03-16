@@ -24,6 +24,7 @@ public class EventoController {
 
         return (List<Evento>) eventoRepository.findAll();
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Evento> buscar(@PathVariable Long id) {
         Optional<Evento> evento = eventoRepository.findById(id);
@@ -34,6 +35,7 @@ public class EventoController {
 
         return ResponseEntity.notFound().build();
     }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Evento adicionar(@RequestBody @Valid Evento evento) {
@@ -51,16 +53,16 @@ public class EventoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Evento> atualizar(@PathVariable Long id , @Valid @RequestBody Evento evento) {
+    public ResponseEntity<Evento> atualizar(@PathVariable Long id, @Valid @RequestBody Evento evento) {
 
-        if (!eventoRepository.existsById(id)){
+        if (!eventoRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
-            }
+        }
         evento.setId(id);
         Evento eventoAtualizado = eventoRepository.save(evento);
         return ResponseEntity.ok(eventoAtualizado);
-        }
     }
+}
 
 
 

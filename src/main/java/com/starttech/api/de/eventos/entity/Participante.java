@@ -1,9 +1,12 @@
 package com.starttech.api.de.eventos.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.List;
 
@@ -15,13 +18,17 @@ public class Participante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
+
+    @CPF(message = "cpf inválido")
     private String CPF;
-    @NotBlank
-    private String nome;
-    @NotBlank
+
+    @NotBlank //Não permite valor nulo e o comprimento "espaços em branco"
+    @Pattern(regexp = "^[A-Z]+(.)*")// O @Pattern é Validação para primeira letra ser maiuscula
+    private String nomeParticipante;
+
+    @Email
     private String email;
 
-    @ManyToMany
+    @ManyToMany //Esta anotação define uma associação com outra entidade
     private List<Evento> eventos;
 }

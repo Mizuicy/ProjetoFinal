@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
                 .stream()
                 .map(error -> error.getField() + ":" + error.getDefaultMessage())
                 .collect(Collectors.toList());
-    return ResponseEntity.badRequest().body(mensagem);
+        return ResponseEntity.badRequest().body(mensagem);
     }
 }
 

@@ -24,9 +24,9 @@ public class IngressoController {
     @GetMapping("/{id}")
     public ResponseEntity<Ingresso> buscarIngresso(@PathVariable long id) {
         Optional<Ingresso> ingresso = ingressoRepository.findById(id);
-        if (ingresso.isPresent()){
+        if (ingresso.isPresent()) {
             return ResponseEntity.ok(ingresso.get());
-        }else {
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
@@ -39,13 +39,13 @@ public class IngressoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Ingresso> atualizarIngresso(@PathVariable long id, @RequestBody Ingresso ingresso) {
-        if (ingressoRepository.existsById(id)){
+        if (ingressoRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
-           ingresso.setId(id);
+        ingresso.setId(id);
         Ingresso ingressoAtualizado = ingressoRepository.save(ingresso);
-        return  ResponseEntity.ok(ingressoAtualizado);
-        }
+        return ResponseEntity.ok(ingressoAtualizado);
+    }
 
 
 }

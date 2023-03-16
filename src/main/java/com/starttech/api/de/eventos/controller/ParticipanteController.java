@@ -1,6 +1,6 @@
 package com.starttech.api.de.eventos.controller;
 
-import com.starttech.api.de.eventos.entity.Evento;
+
 import com.starttech.api.de.eventos.entity.Participante;
 import com.starttech.api.de.eventos.repository.ParticipanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +14,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/Participante")
 
-    public class ParticipanteController {
-
+public class ParticipanteController {
     @Autowired
     private ParticipanteRepository participanteRepository;
-
 
     @GetMapping
     public List<Participante> listar() {
@@ -32,7 +30,6 @@ import java.util.Optional;
         if (participante.isPresent()) {
             return ResponseEntity.ok(participante.get());
         }
-
         return ResponseEntity.notFound().build();
     }
 
@@ -43,7 +40,6 @@ import java.util.Optional;
     }
 
     @DeleteMapping("/{id}")
-
     public ResponseEntity<Void> remover(@PathVariable Long id) {
         Optional<Participante> participante = participanteRepository.findById(id);
 
@@ -51,11 +47,10 @@ import java.util.Optional;
             participanteRepository.delete(participante.get());
         }
         return ResponseEntity.noContent().build();
-
     }
 
-    @PutMapping ("/{id}")
-    public ResponseEntity<Participante> atualizar(@PathVariable Long id , @RequestBody Participante participante) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Participante> atualizar(@PathVariable Long id, @RequestBody Participante participante) {
 
         if (!participanteRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
