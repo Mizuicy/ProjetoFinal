@@ -44,8 +44,8 @@ public class Evento {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "ingressos")
     private List<Ingresso> ingressos;
-    @ManyToOne(fetch =FetchType.LAZY )
-    @JoinColumn
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Convidados")
     private Categoria categoria;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "evento_participante", joinColumns = @JoinColumn(name = "evento_id"),
@@ -55,6 +55,6 @@ public class Evento {
 
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutor")
-    private List<Categoria> categorias;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutor")
+//    private List<Aluno> alunos;
 }

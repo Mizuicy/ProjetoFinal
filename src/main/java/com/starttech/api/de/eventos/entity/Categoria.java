@@ -18,7 +18,6 @@ public class Categoria {
     @NotBlank
     private String TipoMusical;
 
-//    @ManyToOne
-//    @JoinColumn( name = "")
-//    private Evento evento;
+    @OneToMany
+    private List<Evento> evento;
 }
