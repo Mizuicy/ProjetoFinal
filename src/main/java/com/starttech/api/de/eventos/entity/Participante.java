@@ -33,6 +33,6 @@ public class Participante {
     @Email
     private String email;
 
-    @ManyToMany //Esta anotação define uma associação com outra entidade
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Evento> eventos;
 }

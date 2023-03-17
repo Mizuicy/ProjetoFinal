@@ -2,6 +2,7 @@ package com.starttech.api.de.eventos.controller;
 
 import com.starttech.api.de.eventos.entity.Categoria;
 import com.starttech.api.de.eventos.repository.CategoriaRepositoy;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class CategoriaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Categoria adicionar(@RequestBody Categoria categoria) {
+    public Categoria adicionar(@RequestBody @Valid Categoria categoria) {
         return categoriaRepositoy.save(categoria);
     }
 

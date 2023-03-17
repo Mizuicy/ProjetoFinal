@@ -42,11 +42,15 @@ public class Evento {
     private String localizacao;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = )
+    @JoinColumn(name = "ingressos")
     private List<Ingresso> ingressos;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Categoria> categoria;
+    @ManyToOne
+    private Categoria categoria;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "evento_participante", joinColumns = @JoinColumn(name = "evento_id"),
+            inverseJoinColumns = @JoinColumn(name = "participante_id")
+    )
+    private List<Participante> participantes;
 
 //    @ManyToMany
 //    private List<Participante> participante;
