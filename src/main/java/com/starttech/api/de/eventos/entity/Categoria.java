@@ -17,6 +17,8 @@ public class Categoria {
     private Long id;
     @NotBlank
     private String TipoMusical;
-//    @OneToMany(mappedBy = "Convidados")
-//    private List<Evento> eventos;
+
+//    @ManyToOne
+//    @JoinColumn( name = "")
+//    private Evento evento;
 }

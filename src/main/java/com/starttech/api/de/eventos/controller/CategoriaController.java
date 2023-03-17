@@ -37,6 +37,7 @@ public class CategoriaController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Categoria adicionar(@RequestBody @Valid Categoria categoria) {
+
         return categoriaRepositoy.save(categoria);
     }
 

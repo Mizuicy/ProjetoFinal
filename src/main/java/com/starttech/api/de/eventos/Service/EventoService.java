@@ -1,5 +1,6 @@
 package com.starttech.api.de.eventos.Service;
 
+import com.starttech.api.de.eventos.entity.Categoria;
 import com.starttech.api.de.eventos.entity.Evento;
 import com.starttech.api.de.eventos.entity.Participante;
 import com.starttech.api.de.eventos.repository.CategoriaRepositoy;
@@ -7,6 +8,8 @@ import com.starttech.api.de.eventos.repository.EventoRepository;
 import com.starttech.api.de.eventos.repository.ParticipanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EventoService {
@@ -30,12 +33,11 @@ public class EventoService {
         participanteRepository.save(participante);
     }
 
-//    public void associarCategoriaEvento(Long eventoId, Long categoriaEventoId) {
-//        Evento evento = eventoRepository.findById(eventoId).orElseThrow();
-//        Categoria categoria = categoriaRepository.findById(categoriaEventoId).orElseThrow();
-//
-//        evento.setCategoria(categoria);
-//
-//        eventoRepository.save(evento);
-//    }
+    public void associarCategoriaEvento(Long eventoId, Long categoriaEventoId) {
+        Evento evento = eventoRepository.findById(eventoId).orElseThrow();
+        Categoria categoria = categoriaRepository.findById(categoriaEventoId).orElseThrow();
+
+        evento.setCategoria(categoria);
+        eventoRepository.save(evento);
+    }
 }
