@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,44 +18,72 @@ import java.util.List;
  * @Id -- chave primaria da tabela
  *  @GeneratedValue(strategy = GenerationType.IDENTITY) -- indica que o valor do ID é gerado automaticamente
  * */
-@Entity
+//@Entity
+//@Table(name = "eventos")
+//@Getter
+//@Setter
+//public class Evento {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+//
+//    @NotBlank
+//    @Pattern(regexp = "^[A-Z]+(.)*")
+//    private String nomeEvento;
+//
+//    @NotNull
+//    @Pattern(regexp = "^[A-Z]+(.)*")
+//    private String descricao;
+//
+//    @Future(message = "Data antigas não são permitidas")
+//    private LocalDate data;
+//
+//    @NotBlank
+//    @Pattern(regexp = "^[A-Z]+(.)*", message = "A primeira letra deve ser maiuscula")
+//    private String localizacao;
+//
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "ingressos")
+//    private List<Ingresso> ingressos;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "Convidados")
+//    private Categoria categoria;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(name = "evento_participante", joinColumns = @JoinColumn(name = "evento_id"),
+//            inverseJoinColumns = @JoinColumn(name = "participante_id")
+//    )
+//    private List<Participante> participantes;
+//}
+
+
 @Table(name = "eventos")
 @Getter
 @Setter
+@Entity
 public class Evento {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    @Pattern(regexp = "^[A-Z]+(.)*")
-    private String nomeEvento;
+    private String nome;
 
-    @NotNull
-    @Pattern(regexp = "^[A-Z]+(.)*")
-    private String descricao;
+    @NotBlank
+    private String local;
 
     @Future(message = "Data antigas não são permitidas")
+    @NotNull
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate data;
 
     @NotBlank
-    @Pattern(regexp = "^[A-Z]+(.)*", message = "A primeira letra deve ser maiuscula")
-    private String localizacao;
+    private String descricao;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ingressos")
-    private List<Ingresso> ingressos;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Convidados")
-    private Categoria categoria;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "evento_participante", joinColumns = @JoinColumn(name = "evento_id"),
-            inverseJoinColumns = @JoinColumn(name = "participante_id")
-    )
-    private List<Participante> participantes;
+    @Enumerated(EnumType.STRING)
+    private CategoriaEvento categoria;
 
+    @Enumerated(EnumType.STRING)
+    private StatusEvento status;
 
-
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutor")
-//    private List<Aluno> alunos;
 }
