@@ -1,5 +1,6 @@
 package com.starttech.api.de.eventos.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
@@ -10,6 +11,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -85,5 +87,9 @@ public class Evento {
 
     @Enumerated(EnumType.STRING)
     private StatusEvento status;
+
+    @JsonIgnoreProperties("evento")
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Participante> participantes = new ArrayList<>();
 
 }

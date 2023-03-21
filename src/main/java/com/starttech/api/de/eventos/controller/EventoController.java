@@ -1,5 +1,7 @@
 package com.starttech.api.de.eventos.controller;
 
+import com.starttech.api.de.eventos.repository.ParticipanteRepository;
+import org.springframework.web.bind.annotation.*;
 
 import com.starttech.api.de.eventos.entity.CategoriaEvento;
 import com.starttech.api.de.eventos.entity.Evento;
@@ -9,10 +11,11 @@ import com.starttech.api.de.eventos.repository.EventoRepository;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+
 
 
 
@@ -28,9 +31,12 @@ import java.util.stream.Collectors;
 public class EventoController {
 
     private final EventoRepository eventoRepository;
+    private ParticipanteRepository participanteRepository;
 
-    public EventoController(EventoRepository eventoRepository) {
+    @Autowired
+    public EventoController(EventoRepository eventoRepository, ParticipanteRepository participanteRepository) {
         this.eventoRepository = eventoRepository;
+        this.participanteRepository = participanteRepository;
     }
 
     @GetMapping
@@ -47,14 +53,13 @@ public class EventoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-
-
     @PostMapping
     public ResponseEntity<Evento> criarEvento(@RequestBody Evento evento, @RequestParam(value = "status", defaultValue = "DISPONIVEL") String status) {
         evento.setStatus(StatusEvento.valueOf(status.toUpperCase()));
         Evento eventoCriado = eventoRepository.save(evento);
         return ResponseEntity.status(HttpStatus.CREATED).body(eventoCriado);
     }
+
 
 
     @PutMapping("/{id}")
@@ -138,8 +143,6 @@ public class EventoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-
-
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public List<String> tratar(ConstraintViolationException exception){
