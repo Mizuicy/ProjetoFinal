@@ -8,4 +8,3 @@ public enum CategoriaEvento {
     ESPORTES,
     TECNOLOGIA
 }
-
