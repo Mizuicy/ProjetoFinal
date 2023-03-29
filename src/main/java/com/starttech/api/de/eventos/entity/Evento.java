@@ -13,50 +13,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/*@Entity - é uma notação  do JPA que indica que a class é uma entidade
- * @Table(name = "eventos") -- nome da tabela do banco de dados
- * @Id -- chave primaria da tabela
- *  @GeneratedValue(strategy = GenerationType.IDENTITY) -- indica que o valor do ID é gerado automaticamente
- * */
-//@Entity
-//@Table(name = "eventos")
-//@Getter
-//@Setter
-//public class Evento {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//
-//    @NotBlank
-//    @Pattern(regexp = "^[A-Z]+(.)*")
-//    private String nomeEvento;
-//
-//    @NotNull
-//    @Pattern(regexp = "^[A-Z]+(.)*")
-//    private String descricao;
-//
-//    @Future(message = "Data antigas não são permitidas")
-//    private LocalDate data;
-//
-//    @NotBlank
-//    @Pattern(regexp = "^[A-Z]+(.)*", message = "A primeira letra deve ser maiuscula")
-//    private String localizacao;
-//
-//    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "ingressos")
-//    private List<Ingresso> ingressos;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "Convidados")
-//    private Categoria categoria;
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "evento_participante", joinColumns = @JoinColumn(name = "evento_id"),
-//            inverseJoinColumns = @JoinColumn(name = "participante_id")
-//    )
-//    private List<Participante> participantes;
-//}
-
-
 @Table(name = "eventos")
 @Getter
 @Setter

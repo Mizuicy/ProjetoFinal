@@ -16,4 +16,3 @@ public interface ParticipanteRepository extends JpaRepository<Participante, Long
 
     Participante save(Participante participante);
 }
-
