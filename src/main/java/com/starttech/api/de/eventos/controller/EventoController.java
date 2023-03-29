@@ -1,13 +1,10 @@
 package com.starttech.api.de.eventos.controller;
 
-import com.starttech.api.de.eventos.repository.ParticipanteRepository;
-import org.springframework.web.bind.annotation.*;
-
 import com.starttech.api.de.eventos.entity.CategoriaEvento;
 import com.starttech.api.de.eventos.entity.Evento;
 import com.starttech.api.de.eventos.entity.StatusEvento;
 import com.starttech.api.de.eventos.repository.EventoRepository;
-
+import com.starttech.api.de.eventos.repository.ParticipanteRepository;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
@@ -15,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-
-
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -54,7 +49,7 @@ public class EventoController {
         }
     }
     @PostMapping
-    public ResponseEntity<Evento> criarEvento(@RequestBody Evento evento, @RequestParam(value = "status", defaultValue = "DISPONIVEL") String status) {
+    public ResponseEntity<Evento> criarEvento(@RequestBody Evento evento, @Valid @RequestParam(value = "status", defaultValue = "DISPONIVEL") String status) {
         evento.setStatus(StatusEvento.valueOf(status.toUpperCase()));
         Evento eventoCriado = eventoRepository.save(evento);
         return ResponseEntity.status(HttpStatus.CREATED).body(eventoCriado);
@@ -158,6 +153,3 @@ public class EventoController {
     }
 
 }
-
-
-

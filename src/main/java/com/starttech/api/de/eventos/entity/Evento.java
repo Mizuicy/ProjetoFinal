@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -70,15 +69,12 @@ public class Evento {
 
     @NotBlank
     private String nome;
-
     @NotBlank
     private String local;
-
     @Future(message = "Data antigas não são permitidas")
     @NotNull
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate data;
-
     @NotBlank
     private String descricao;
 
@@ -89,7 +85,7 @@ public class Evento {
     private StatusEvento status;
 
     @JsonIgnoreProperties("evento")
-    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Participante> participantes = new ArrayList<>();
 
 }

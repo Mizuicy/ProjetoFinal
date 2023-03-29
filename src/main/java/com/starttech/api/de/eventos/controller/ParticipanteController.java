@@ -20,7 +20,8 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/participantes")
+@RequestMapping("/" +
+        "")
 @Validated
 public class ParticipanteController {
 
@@ -30,15 +31,18 @@ public class ParticipanteController {
     @Autowired
     private EventoRepository eventoRepository;
 
-
+    @GetMapping
+    public List<Participante> buscarEventos() {
+        return participanteRepository.findAll();
+    }
     @PostMapping
     public ResponseEntity<Participante> criarParticipante(@Valid @RequestBody Participante participante) {
-        Participante novoParticipante = participanteRepository.save(participante);
+        Participante novoParticipante = participanteRepository.saveAndFlush(participante);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoParticipante);
     }
 
     //localhost:8080/participantes/1/adicionarEvento/1
-    @PostMapping("/{eventoId}/adicionarEvento/{participanteId}")
+    @PostMapping("/eventos/{eventoId}/participantes/{participanteId}")
     public ResponseEntity<Evento> adicionarEvento(@PathVariable Long eventoId, @PathVariable Long participanteId) {
         Optional<Evento> optionalEvento = eventoRepository.findById(eventoId);
         Optional<Participante> optionalParticipante = participanteRepository.findById(participanteId);
