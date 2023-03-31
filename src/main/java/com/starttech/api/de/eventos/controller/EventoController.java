@@ -55,8 +55,6 @@ public class EventoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(eventoCriado);
     }
 
-
-
     @PutMapping("/{id}")
     public ResponseEntity<Evento> atualizarEvento(@PathVariable Long id, @Valid @RequestBody Evento evento) {
         Optional<Evento> eventoExistente = eventoRepository.findById(id);

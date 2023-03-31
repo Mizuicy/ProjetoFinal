@@ -27,9 +27,12 @@ public class Participante {
     @JoinColumn(name = "evento_id")
     private Evento evento;
 
+
     public Participante(String nome, String email) {
         this.nome = nome;
         this.email = email;
     }
+    public Participante() {
 
+    }
 }

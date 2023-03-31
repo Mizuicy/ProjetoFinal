@@ -4,7 +4,7 @@ package com.starttech.api.de.eventos.controller;
 
 import com.starttech.api.de.eventos.entity.Evento;
 import com.starttech.api.de.eventos.entity.Participante;
-import com.starttech.api.de.eventos.exceptionhandler.ResourceNotFoundException;
+import com.starttech.api.de.eventos.repository.exceptionhandler.ResourceNotFoundException;
 import com.starttech.api.de.eventos.repository.EventoRepository;
 import com.starttech.api.de.eventos.repository.ParticipanteRepository;
 import jakarta.validation.Valid;
@@ -20,8 +20,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/" +
-        "")
+@RequestMapping("/participante")
 @Validated
 public class ParticipanteController {
 
