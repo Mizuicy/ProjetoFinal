@@ -115,8 +115,6 @@ public class EventoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-
-
     //http://localhost:8080/eventos/contagem por categoria
     @GetMapping("/contagem")
     public ResponseEntity<Map<CategoriaEvento, Long>> contarEventosPorCategoria(@RequestParam(value = "status", required = false) String status) {

@@ -39,7 +39,6 @@ public class ParticipanteController {
         Participante novoParticipante = participanteRepository.saveAndFlush(participante);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoParticipante);
     }
-
     //localhost:8080/participantes/1/adicionarEvento/1
     @PostMapping("/eventos/{eventoId}/participantes/{participanteId}")
     public ResponseEntity<Evento> adicionarEvento(@PathVariable Long eventoId, @PathVariable Long participanteId) {

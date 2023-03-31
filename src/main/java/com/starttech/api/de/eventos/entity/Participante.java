@@ -33,6 +33,5 @@ public class Participante {
         this.email = email;
     }
     public Participante() {
-
     }
 }
